@@ -76,7 +76,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             JSONArray translations=data.getJSONArray("translations");
                             for(int i=0;i<translations.length();i++){
                                 JSONObject js=translations.getJSONObject(i);
-                                textview.setText(js.getString("detectedSourceLanguage"));
+
+                                TranslateData td=new TranslateData();
+                                td.setDetections(js.getString("detectedSourceLanguage"));
+                                textview.setText(td.getDetections());
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
